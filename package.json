@@ -1,0 +1,34 @@
+
+{
+	"name": "fs-force",
+	"description": "Create, delete, rename, copy files/directories without caring about its and its parent's existence",
+	"version": "0.0.0",
+	"author": "Hoàng Văn Khải <hvksmr1996@gmail.com>",
+	"contributors": [
+		"Hoàng Văn Khải <hvksmr1996@gmail.com>"
+	],
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ksxnodemodules/fs-force.git"
+	},
+	"engines": {
+		"node": ">=5.0.0"
+	},
+	"dependencies": {},
+	"main": "index.js",
+	"keywords": [
+		"fs",
+		"force",
+		"force-delete",
+		"force-create",
+		"force-copy"
+	],
+	"bugs": {
+		"url": "https://github.com/ksxnodemodules/fs-force/issues"
+	},
+	"homepage": "https://github.com/ksxnodemodules/fs-force#readme",
+	"scripts": {
+		"test": "node --es-staging ./test/index.js"
+	}
+}
