@@ -22,6 +22,8 @@
 	const DONOTHING = () => {};
 
 	var _mkdir = (dirname, onfinish, onaction) => {
+		var callOnFinish = (action) =>
+			onfinish(null, new Info('mkdir', dirname, action));
 		stat(dirname, (error, info) => {
 			if (error) {
 				let parent = getParent(dirname);
@@ -35,9 +37,12 @@
 						}
 						var action = new Action('create', dirname, 'dir');
 						justTry(onaction, [action]);
-						onfinish(null, new Info('mkdir', dirname, [action, ...info.action]));
+						callOnFinish([action, ...info.action]);
 					});
-				}, onaction) : onfinish(null, new Info('', dirname, []));
+				}, onaction) : onfinish({
+					message: `Root directory "${parent}" doesn't exist`,
+					__proto__: error
+				}, null);
 			}
 			if (info.isFile()) {
 				return unlink(dirname, (error) => {
@@ -50,11 +55,11 @@
 						if (error) {
 							return onfinish(error, null);
 						}
-						onfinish(null, new Info('mkdir', dirname, [action, ...info.action]));
+						callOnFinish([action, ...info.action]);
 					}, onaction);
 				});
 			}
-			onfinish(null, new Info('mkdir', dirname, []));
+			callOnFinish([]);
 		});
 	};
 
