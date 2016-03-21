@@ -18,7 +18,7 @@
 	var getParent = path.dirname;
 
 	var _mkdir = (dirname, onfinish, onaction) => {
-		var callOnFinish = (action) =>
+		var callOnFinish = (...action) =>
 			onfinish(null, new Info('mkdir', dirname, action));
 		stat(dirname, (error, info) => {
 			if (error) {
@@ -33,7 +33,7 @@
 						}
 						var action = new Action('create', dirname, 'dir');
 						justTry(onaction, [action]);
-						callOnFinish([action, ...info.action]);
+						callOnFinish(action, ...info.action);
 					});
 				}, onaction) : onfinish({
 					message: `Root directory "${parent}" doesn't exist`,
@@ -51,11 +51,11 @@
 						if (error) {
 							return onfinish(error, null);
 						}
-						callOnFinish([action, ...info.action]);
+						callOnFinish(action, ...info.action);
 					}, onaction);
 				});
 			}
-			callOnFinish([]);
+			callOnFinish();
 		});
 	};
 
