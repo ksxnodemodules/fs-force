@@ -9,7 +9,7 @@
 
 ### Prerequisite
 
-You need this function to run every following examples
+You need this function to run every following examples (except the stuffs-deletion one)
 
 ```javascript
 function getAction(action) {
@@ -74,3 +74,33 @@ try {
     console.error('Failed');
 }
 ```
+
+### Delete things
+
+#### Asynchronous
+
+```javascript
+var rm = require('fs-force/delete');
+rm('temp/shall-be-deleted', (error, info) => {
+	if (error) {
+		console.error('Failed');
+	}
+	console.log(info.action.length ? 'Deleted' : 'It does not exists');
+});
+```
+
+#### Synchronous
+
+```javascript
+var rmSync = require('fs-force/delete-sync');
+try {
+	let havedone = rmSync('temp/shall-be-deleted').action.length;
+	console.log(havedone ? 'Deleted' : 'It does not exists');
+} catch (error) {
+	console.error('Failed');
+}
+```
+
+## License
+
+[MIT](https://github.com/ksxnodemodules/fs-force/blob/master/LICENSE.md) © [Hoàng Văn Khải](https://github.com/KSXGitHub)
