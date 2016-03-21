@@ -13,6 +13,7 @@
 	var _throwif = require('./utils/throw-if.js');
 	var _donothing = require('./utils/do-nothing.js');
 	var flatArray = require('./utils/flat-array.js');
+	var _getdesc = require('./utils/write-file-desc.js');
 
 	var freeze = Object.freeze;
 	var stat = fs.stat;

@@ -2,6 +2,8 @@
 ((module) => {
 	'use strict';
 
+	var freeze = Object.freeze;
+
 	const DEFAULT_OPTIONS = freeze({
 		'encoding': 'utf8',
 		'__proto__': null
