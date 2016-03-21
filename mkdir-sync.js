@@ -4,6 +4,7 @@
 
 	var fs = require('fs');
 	var path = require('path');
+	var justTry = require('just-try');
 	var _getfunc = require('./utils/get-val.js').function;
 	var Info = require('./utils/info.js');
 	var Action = require('./utils/action.js');

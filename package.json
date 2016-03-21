@@ -16,7 +16,8 @@
 		"node": ">=5.0.0"
 	},
 	"dependencies": {
-		"try-promise": ">=1.0.0 <2.0.0"
+		"try-promise": ">=1.0.0 <2.0.0",
+		"just-try": ">=1.0.0 <2.0.0"
 	},
 	"main": "index.js",
 	"keywords": [
