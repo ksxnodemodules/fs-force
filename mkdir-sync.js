@@ -18,22 +18,26 @@
 	const DONOTHING = () => {};
 
 	var _mkdirSync = (dirname, onaction) => {
+		var callOnAction = (action) =>
+			justTry(() => onaction(action), (error) => console.error(error));
 		try {
 			let info = statSync(dirname);
 			if (info.isFile()) {
 				unlinkSync(dirname);
 				let action = new Action('delete', dirname, 'file');
+				callOnAction(action);
+				// let prevact = <-- Continue from here...
 			}
 		} catch (_) {
 			let parent = getParent(dirname);
 			if (parent === dirname) {
 				return new Info('', dirname, []);
 			}
-			_mkdirSync(dirname, onaction);
+			var prevact = _mkdirSync(parent, onaction).action;
 			mkdirSync(dirname);
 			let action = new Action('create', dirname, 'dir');
-			justTry(() => onaction(action), (error) => console.error(error));
-			return [action];
+			callOnAction(action);
+			return new Info('mkdir', dirname, [...prevact, action]);
 		}
 	};
 

@@ -44,9 +44,14 @@
 					if (error) {
 						return onfinish(error, null);
 					}
-					var action = [new Action('delete', dirname, 'file')];
-					justTry(onaction, action);
-					onfinish(null, new Info('mkdir', dirname, action));
+					var action = new Action('delete', dirname, 'file');
+					justTry(onaction, [action]);
+					_mkdir(dirname, (error, info) => {
+						if (error) {
+							return onfinish(error, null);
+						}
+						onfinish(null, new Info('mkdir', dirname, [action, ...info.action]));
+					}, onaction);
 				});
 			}
 			onfinish(null, new Info('mkdir', dirname, []));
