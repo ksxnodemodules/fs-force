@@ -15,7 +15,6 @@
 	var flatArray = require('./utils/flat-array.js');
 	var _getdesc = require('./utils/write-file-desc.js');
 
-	var freeze = Object.freeze;
 	var stat = fs.stat;
 	var writeFile = fs.writeFile;
 	var resolvePath = path.resolve;
