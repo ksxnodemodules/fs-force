@@ -15,6 +15,7 @@
 	var readdir = fs.readdir;
 	var resolvePath = path.resolve;
 	var getParent = path.dirname;
+	var joinPath = path.join;
 
 	const THROWIF = (error) => {
 		if (error) throw error;
@@ -47,7 +48,7 @@
 					var childpromises = new Set();
 					for (let item of list) {
 						let callback = (resolve, reject) =>
-							_rm(item, (error, info) => error ? reject(error) : resolve(info), onaction);
+							_rm(joinPath(entry, item), (error, info) => error ? reject(error) : resolve(info), onaction);
 						childpromises.add(new Promise(callback));
 					}
 					Promise.all(childpromises).then((info) => {
