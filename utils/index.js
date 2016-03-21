@@ -5,5 +5,7 @@ module.exports = {
 	'Action': require('./action.js'),
 	'throwif': require('./throw-if.js'),
 	'donothing': require('./do-nothing.js'),
-	'flatArray': require('./flat-array.js')
+	'flatArray': require('./flat-array.js'),
+	'createWriteFileDescriptor': require('./write-file-desc.js'),
+	'__proto__': null
 };
