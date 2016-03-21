@@ -1,7 +1,7 @@
 
 {
 	"name": "fs-force",
-	"description": "Create, delete, rename, copy files/directories without caring about its and its parent's existence",
+	"description": "Just provide a path to do things",
 	"version": "0.0.1",
 	"author": "Hoàng Văn Khải <hvksmr1996@gmail.com>",
 	"contributors": [
