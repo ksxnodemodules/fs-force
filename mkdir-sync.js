@@ -9,6 +9,7 @@
 	var Info = require('./utils/info.js');
 	var Action = require('./utils/action.js');
 	var _donothing = require('./utils/do-nothing.js');
+	var flatArray = require('./utils/flat-array.js');
 
 	var mkdirSync = fs.mkdirSync;
 	var statSync = fs.statSync;
@@ -28,7 +29,7 @@
 				let action = new Action('delete', dirname, 'file');
 				callOnAction(action);
 				let nextact = _mkdirSync(dirname, onaction).action;
-				return createInfo(action, ...nextact);
+				return createInfo(action, ...flatArray(nextact));
 			}
 			if (info.isDirectory()) {
 				return createInfo();
@@ -46,7 +47,7 @@
 			mkdirSync(dirname);
 			let action = new Action('create', dirname, 'dir');
 			callOnAction(action);
-			return createInfo(...prevact, action);
+			return createInfo(...flatArray(prevact), action);
 		}
 	};
 

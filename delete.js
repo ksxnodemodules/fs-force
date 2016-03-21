@@ -8,6 +8,7 @@
 	var _getfunc = require('./utils/get-val.js').function;
 	var Info = require('./utils/info.js');
 	var Action = require('./utils/action.js');
+	var flatArray = require('./utils/flat-array.js');
 
 	var rmdir = fs.rmdir;
 	var unlink = fs.unlink;
@@ -58,7 +59,7 @@
 							}
 							var action = new Action('delete', entry, 'dir');
 							justTry(onaction, [action]);
-							callOnFinish(...info.map((info) => info.action), action);
+							callOnFinish(...flatArray(info.map((info) => info.action)), action);
 						});
 					}).catch((error) => onfinish(error, null));
 				});

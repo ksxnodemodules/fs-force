@@ -10,6 +10,7 @@
 	var Action = require('./utils/action.js');
 	var _throwif = require('./utils/throw-if.js');
 	var _donothing = require('./utils/do-nothing.js');
+	var flatArray = require('./utils/flat-array.js');
 
 	var mkdir = fs.mkdir;
 	var stat = fs.stat;
@@ -33,7 +34,7 @@
 						}
 						var action = new Action('create', dirname, 'dir');
 						justTry(onaction, [action]);
-						callOnFinish(action, ...info.action);
+						callOnFinish(action, ...flatArray(info.action));
 					});
 				}, onaction) : onfinish({
 					message: `Root directory "${parent}" doesn't exist`,
@@ -51,7 +52,7 @@
 						if (error) {
 							return onfinish(error, null);
 						}
-						callOnFinish(action, ...info.action);
+						callOnFinish(action, ...flatArray(info.action));
 					}, onaction);
 				});
 			}

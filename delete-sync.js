@@ -9,6 +9,7 @@
 	var Info = require('./utils/info.js');
 	var Action = require('./utils/action.js');
 	var _donothing = require('./utils/do-nothing.js');
+	var flatArray = require('./utils/flat-array.js');
 
 	var rmdirSync = fs.rmdirSync;
 	var unlinkSync = fs.unlinkSync;
@@ -37,7 +38,7 @@
 				rmdirSync(entry);
 				let action = new Action('delete', entry, 'dir');
 				callOnAction(action);
-				return createInfo(...prevact, action);
+				return createInfo(...flatArray(prevact), action);
 			}
 			throw new Error(`Can't delete entry "${entry}"`);
 		}
