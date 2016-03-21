@@ -31,26 +31,26 @@
 			}
 			stat(filename, (error, statinfo) => {
 				if (error) {
-					return write();
+					return write('create');
 				}
 				if (statinfo.isDirectory()) {
 					return _rm(filename, (error, rminfo) => {
 						if (error) {
 							return onfinish(error, null);
 						}
-						write(...flatArray(rminfo.action));
+						write('create', ...flatArray(rminfo.action));
 					}, onaction);
 				}
 				if (statinfo.isFile()) {
-					return write();
+					return write('edit');
 				}
 				onfinish(new Error(`Can't write "${filename}" as a file`));
-				function write(...nextact) {
+				function write(type, ...nextact) {
 					writeFile(filename, data, options, (error) => {
 						if (error) {
 							return onfinish(error, null);
 						}
-						var action = new Action('create', filename, 'file');
+						var action = new Action(type, filename, 'file');
 						justTry(onaction, [action]);
 						callOnFinish(...flatArray(mkdirinfo.action), ...nextact, action);
 					});

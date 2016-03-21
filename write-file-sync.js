@@ -27,20 +27,20 @@
 		var data = descriptor.data;
 		var options = descriptor.options;
 		var mkdiract = _mkdirSync(getParent(filename), onaction).action;
-		return justTry(() => statSync(filename), () => write(), handleExist);
+		return justTry(() => statSync(filename), () => write('create'), handleExist);
 		function handleExist(statinfo) {
 			if (statinfo.isDirectory()) {
 				let rmact = _rmSync(filename, onaction).action;
-				return write(...flatArray(rmact));
+				return write('create', ...flatArray(rmact));
 			}
 			if (statinfo.isFile()) {
-				return write();
+				return write('edit');
 			}
 			throw new Error(`Can't write "${filename}" as a file`);
 		}
-		function write(...nextact) {
+		function write(type, ...nextact) {
 			writeFileSync(filename, data, options);
-			var action = new Action('create', filename, 'file');
+			var action = new Action(type, filename, 'file');
 			justTry(onaction, [action]);
 			return createInfo(...flatArray(mkdiract), ...nextact, action);
 		}
