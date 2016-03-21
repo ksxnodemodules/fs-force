@@ -20,24 +20,34 @@
 	var _mkdirSync = (dirname, onaction) => {
 		var callOnAction = (action) =>
 			justTry(() => onaction(action), (error) => console.error(error));
+		var createInfo = (...action) =>
+			new Info('mkdir', dirname, action);
 		try {
 			let info = statSync(dirname);
 			if (info.isFile()) {
 				unlinkSync(dirname);
 				let action = new Action('delete', dirname, 'file');
 				callOnAction(action);
-				// let prevact = <-- Continue from here...
+				let nextact = _mkdirSync(dirname, onaction).action;
+				return createInfo(action, ...nextact);
 			}
-		} catch (_) {
+			if (info.isDirectory()) {
+				return createInfo();
+			}
+			throw new Error(`Invalid format of "${dirname}"`);
+		} catch (error) {
 			let parent = getParent(dirname);
 			if (parent === dirname) {
-				return new Info('', dirname, []);
+				throw {
+					message: `Root directory "${parent}" doesn't exist`,
+					__proto__: error
+				};
 			}
 			var prevact = _mkdirSync(parent, onaction).action;
 			mkdirSync(dirname);
 			let action = new Action('create', dirname, 'dir');
 			callOnAction(action);
-			return new Info('mkdir', dirname, [...prevact, action]);
+			return createInfo(...prevact, action);
 		}
 	};
 
