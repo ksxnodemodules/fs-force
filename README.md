@@ -75,7 +75,7 @@ try {
 }
 ```
 
-### Delete things
+### Delete things no matter it's a file or a folder or doesn't even exists
 
 #### Asynchronous
 
