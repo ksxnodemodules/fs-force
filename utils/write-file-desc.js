@@ -4,6 +4,8 @@
 
 	var freeze = Object.freeze;
 
+	const EMPTY_OBJECT = freeze(Object.create(null));
+
 	const DEFAULT_OPTIONS = freeze({
 		'encoding': 'utf8',
 		'__proto__': null
@@ -21,6 +23,13 @@
 		}
 		switch (typeof descriptor) {
 			case 'object':
+				if (descriptor instanceof Buffer) {
+					return {
+						'data': descriptor,
+						'options': EMPTY_OBJECT,
+						'__proto__': null
+					};
+				}
 				return {
 					'data': descriptor.data || '',
 					'options': descriptor.options || DEFAULT_OPTIONS,
