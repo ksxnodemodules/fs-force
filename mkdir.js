@@ -8,18 +8,14 @@
 	var _getfunc = require('./utils/get-val.js').function;
 	var Info = require('./utils/info.js');
 	var Action = require('./utils/action.js');
+	var _throwif = require('./utils/throw-if.js');
+	var _donothing = require('./utils/do-nothing.js');
 
 	var mkdir = fs.mkdir;
 	var stat = fs.stat;
 	var unlink = fs.unlink;
 	var resolvePath = path.resolve;
 	var getParent = path.dirname;
-
-	const THROWIF = (error) => {
-		if (error) throw error;
-	};
-
-	const DONOTHING = () => {};
 
 	var _mkdir = (dirname, onfinish, onaction) => {
 		var callOnFinish = (action) =>
@@ -64,6 +60,6 @@
 	};
 
 	module.exports = (dirname, onfinish, onaction) =>
-		_mkdir(resolvePath(dirname), _getfunc(onfinish, THROWIF), _getfunc(onaction, DONOTHING));
+		_mkdir(resolvePath(dirname), _getfunc(onfinish, _throwif), _getfunc(onaction, _donothing));
 
 })(module);
