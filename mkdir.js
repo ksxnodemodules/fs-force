@@ -25,7 +25,7 @@
 		stat(dirname, (error, info) => {
 			if (error) {
 				let parent = getParent(dirname);
-				return parent !== dirname && void _mkdir(getParent(dirname), (error, info) => {
+				return parent !== dirname ? _mkdir(parent, (error, info) => {
 					if (error) {
 						return onfinish(error, null);
 					}
@@ -37,7 +37,7 @@
 						justTry(onaction, [action]);
 						onfinish(null, new Info('mkdir', dirname, [action, ...info.action]));
 					});
-				}, onaction);
+				}, onaction) : onfinish(null, new Info('', dirname, []));
 			}
 			if (info.isFile()) {
 				return unlink(dirname, (error) => {

@@ -19,13 +19,19 @@
 
 	var _mkdirSync = (dirname, onaction) => {
 		try {
-			var info = statSync(dirname);
+			let info = statSync(dirname);
 			if (info.isFile()) {
-
+				unlinkSync(dirname);
+				let action = new Action('delete', dirname, 'file');
 			}
 		} catch (_) {
+			let parent = getParent(dirname);
+			if (parent === dirname) {
+				return new Info('', dirname, []);
+			}
+			_mkdirSync(dirname, onaction);
 			mkdirSync(dirname);
-			var action = new Action('create', dirname, 'dir');
+			let action = new Action('create', dirname, 'dir');
 			justTry(() => onaction(action), (error) => console.error(error));
 			return [action];
 		}
