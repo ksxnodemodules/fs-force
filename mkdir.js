@@ -22,12 +22,10 @@
 	const DONOTHING = () => {};
 
 	var _mkdir = (dirname, onfinish, onaction) => {
-		if (!dirname) {
-			return;
-		}
 		stat(dirname, (error, info) => {
 			if (error) {
-				return _mkdir(getParent(dirname), (error, info) => {
+				let parent = getParent(dirname);
+				return parent !== dirname && void _mkdir(getParent(dirname), (error, info) => {
 					if (error) {
 						return onfinish(error, null);
 					}

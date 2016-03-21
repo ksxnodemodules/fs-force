@@ -18,9 +18,6 @@
 	const DONOTHING = () => {};
 
 	var _mkdirSync = (dirname, onaction) => {
-		if (!dirname) {
-			return [];
-		}
 		try {
 			var info = statSync(dirname);
 			if (info.isFile()) {
@@ -29,7 +26,8 @@
 		} catch (_) {
 			mkdirSync(dirname);
 			var action = new Action('create', dirname, 'dir');
-			// continue from here...
+			justTry(() => onaction(action), (error) => console.error(error));
+			return [action];
 		}
 	};
 
