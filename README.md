@@ -113,4 +113,4 @@ try {
 
 ## License
 
-[MIT](https://github.com/ksxnodemodules/fs-force/blob/master/LICENSE.md) © [Hoàng Văn Khải](https://github.com/KSXGitHub)
+[MIT](https://github.com/KSXGitHub/my-licenses/blob/master/MIT.md) © [Hoàng Văn Khải](https://github.com/KSXGitHub)
