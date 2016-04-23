@@ -10,6 +10,10 @@
     const EXIT_SUCCESS = 0;
     const EXIT_FAILURE = 1;
 
-    writeFile(argv[2], {'data': argv[3]}, require('./onfinish.js')('Created File'), require('./onaction.js'));
+    if (argv.length === 2) {
+        return console.error(`force-mkfile <file-path> [<file-text-content>]`);
+    }
+
+    writeFile(argv[2], {'data': argv[3] || ''}, require('./onfinish.js')('Created File'), require('./onaction.js'));
 
 })();
