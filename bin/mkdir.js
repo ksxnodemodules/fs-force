@@ -5,7 +5,6 @@
 
     var resolvePath = require('path').resolve;
     var process = require('process');
-    var stract = require('fs-force-action-as-string');
     var mkdir = require('../mkdir.js');
 
     const EXIT_SUCCESS = 0;
