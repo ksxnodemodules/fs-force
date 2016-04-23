@@ -20,6 +20,11 @@
 		"just-try": ">=1.0.0 <2.0.0"
 	},
 	"main": "index.js",
+	"bin": {
+		"force-delete": "./bin/delete.js",
+		"force-mkdir": "./bin/mkdir.js",
+		"force-mkfile": "./bin/mkfile.js"
+	},
 	"keywords": [
 		"fs",
 		"force",
