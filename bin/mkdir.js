@@ -21,7 +21,7 @@
             console.error(error);
             process.exit(EXIT_FAILURE);
         } else {
-            console.log(`Created directory ${info.path}`);
+            console.log(`Created Directory ${info.path}`);
             process.exit(EXIT_SUCCESS);
         }
     }
