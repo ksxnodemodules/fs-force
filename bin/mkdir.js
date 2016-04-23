@@ -13,7 +13,7 @@
 
     process.argv.slice(2)
         .map((dirname) => resolvePath(dirname))
-        .forEach((dirname) => mkdir(dirname, onfinish, onaction))
+        .forEach((dirname) => mkdir(dirname, onfinish, require('./onaction.js')))
     ;
 
     function onfinish(error, info) {
@@ -24,10 +24,6 @@
             console.log(`Created Directory ${info.path}`);
             process.exit(EXIT_SUCCESS);
         }
-    }
-
-    function onaction(action) {
-        console.log(stract(action));
     }
 
 })();
