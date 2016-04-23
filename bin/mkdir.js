@@ -4,25 +4,14 @@
     'use strict';
 
     var resolvePath = require('path').resolve;
-    var process = require('process');
     var mkdir = require('../mkdir.js');
 
     const EXIT_SUCCESS = 0;
     const EXIT_FAILURE = 1;
 
-    process.argv.slice(2)
+    require('process').argv.slice(2)
         .map((dirname) => resolvePath(dirname))
-        .forEach((dirname) => mkdir(dirname, onfinish, require('./onaction.js')))
+        .forEach((dirname) => mkdir(dirname, require('./onfinish.js')('Created Directory'), require('./onaction.js')))
     ;
-
-    function onfinish(error, info) {
-        if (error) {
-            console.error(error);
-            process.exit(EXIT_FAILURE);
-        } else {
-            console.log(`Created Directory ${info.path}`);
-            process.exit(EXIT_SUCCESS);
-        }
-    }
 
 })();
