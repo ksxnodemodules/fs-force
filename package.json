@@ -21,9 +21,9 @@
 	},
 	"main": "index.js",
 	"bin": {
-		"force-delete": "./bin/delete.js",
 		"force-mkdir": "./bin/mkdir.js",
-		"force-mkfile": "./bin/mkfile.js"
+		"force-mkfile": "./bin/mkfile.js",
+		"force-delete": "./bin/delete.js"
 	},
 	"keywords": [
 		"fs",
