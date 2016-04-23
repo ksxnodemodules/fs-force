@@ -1,3 +1,0 @@
-[submodule "bin/fs-force-action-as-string"]
-	path = bin/action-as-string
-	url = https://github.com/ksxnodemodules/fs-force-action-as-string.git
