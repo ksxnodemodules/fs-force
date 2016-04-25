@@ -7,9 +7,6 @@
     var argv = require('process').argv;
     var rm = require('../delete.js');
 
-    const EXIT_SUCCESS = 0;
-    const EXIT_FAILURE = 1;
-
     if (argv.length === 2) {
         return console.error(`force-delete <list-of-path>`);
     }
