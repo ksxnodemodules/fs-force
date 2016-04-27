@@ -11,6 +11,6 @@
         return console.error(`force-mkfile <file-path> [<file-text-content>]`);
     }
 
-    writeFile(argv[2], {'data': argv[3] || ''}, require('./onfinish.js')('Created File'), require('./onaction.js'));
+    writeFile(argv[2], {'data': argv[3] || ''}, require('./onfinish.js')('Creating File'), require('./onaction.js'));
 
 })();

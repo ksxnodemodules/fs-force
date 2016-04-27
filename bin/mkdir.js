@@ -13,7 +13,7 @@
 
     argv.slice(2)
         .map((dirname) => resolvePath(dirname))
-        .forEach((dirname) => mkdir(dirname, require('./onfinish.js')('Created Directory'), require('./onaction.js')))
+        .forEach((dirname) => mkdir(dirname, require('./onfinish.js')('Creating Directory'), require('./onaction.js')))
     ;
 
 })();

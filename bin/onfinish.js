@@ -12,7 +12,7 @@
             console.error(error);
             process.exit(EXIT_FAILURE);
         } else {
-            console.log(`${action} ${info.path}`);
+            console.log(`${action} ${info.path} successfully`);
             process.exit(EXIT_SUCCESS);
         }
     };
