@@ -6,6 +6,7 @@
     var resolvePath = require('path').resolve;
     var argv = require('process').argv;
     var rm = require('../delete.js');
+    var ExtendedPromise = require('extended-promise');
 
     if (argv.length === 2) {
         return console.error(`force-delete <list-of-path>`);
@@ -19,6 +20,6 @@
         })
     ;
 
-
+    ExtendedPromise.queue(ExtendedPromise.resolve(), ...prmseq);
 
 })();
