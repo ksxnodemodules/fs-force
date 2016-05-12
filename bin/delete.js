@@ -11,9 +11,14 @@
         return console.error(`force-delete <list-of-path>`);
     }
 
-    argv.slice(2)
+    var prmseq = argv.slice(2)
         .map((fname) => resolvePath(fname))
-        .forEach((fname) => rm(fname, require('./onfinish.js')('Deleting'), require('./onaction.js')))
+        .map((fname) => (_, resolve) => {
+            rm(fname, require('./onfinish.js')('Deleting'), require('./onaction.js'));
+            resolve();
+        })
     ;
+
+
 
 })();
