@@ -63,6 +63,6 @@
 			.onfinish((errinf) => onfinish(...errinf));
 
 	module.exports = (dirname, onfinish, onaction) =>
-		_mkdir(resolvePath(dirname), _getfunc(onfinish, _throwif), _getfunc(onaction, _donothing))
+		_mkdir(resolvePath(dirname), _getfunc(onfinish, _throwif), _getfunc(onaction, _donothing));
 
 })(module);
