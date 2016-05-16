@@ -2,9 +2,10 @@
 ((module) => {
 	'use strict';
 
-	var fs = require('fs');
+	var {stat, writeFile} = require('fs');
 	var path = require('path');
 	var justTry = require('try-promise').try;
+	var {addPromise} = require('./utils/promise.js');
 	var _mkdir = require('./mkdir.js');
 	var _rm = require('./delete.js');
 	var _getfunc = require('./utils/get-val.js').function;
@@ -15,12 +16,10 @@
 	var flatArray = require('./utils/flat-array.js');
 	var _getdesc = require('./utils/write-file-desc.js');
 
-	var stat = fs.stat;
-	var writeFile = fs.writeFile;
 	var resolvePath = path.resolve;
 	var getParent = path.dirname;
 
-	var _writeFile = (filename, descriptor, onfinish, onaction) => {
+	var __writeFile = (filename, descriptor, onfinish, onaction) => {
 		var callOnFinish = (...action) =>
 			onfinish(null, new Info('mkfile', filename, action));
 		var data = descriptor.data;
@@ -58,6 +57,10 @@
 			})
 		}, onaction);
 	}
+
+	var _writeFile = (file, descriptor, onfinish, onaction) =>
+		addPromise((resolve) => __writeFile(file, descriptor, (...errinf) => resolve(errinf), onaction))
+			.onfinish((errinf) => onfinish(...errinf));
 
 	module.exports = (filename, descriptor, onfinish, onaction) =>
 		_writeFile(resolvePath(filename), _getdesc(descriptor), _getfunc(onfinish, _throwif), _getfunc(onaction, _donothing));

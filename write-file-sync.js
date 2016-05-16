@@ -2,7 +2,7 @@
 ((module) => {
 	'use strict';
 
-	var fs = require('fs');
+	var {statSync, writeFileSync} = require('fs');
 	var path = require('path');
 	var justTry = require('just-try');
 	var _mkdirSync = require('./mkdir-sync.js');
@@ -14,8 +14,6 @@
 	var flatArray = require('./utils/flat-array.js');
 	var _getdesc = require('./utils/write-file-desc.js');
 
-	var statSync = fs.statSync;
-	var writeFileSync = fs.writeFileSync;
 	var resolvePath = path.resolve;
 	var getParent = path.dirname;
 

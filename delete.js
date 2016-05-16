@@ -2,18 +2,15 @@
 ((module) => {
 	'use strict';
 
-	var fs = require('fs');
+	var {rmdir, unlink, stat, readdir} = require('fs');
 	var path = require('path');
 	var justTry = require('try-promise').try;
+	var {addPromise} = require('./utils/promise.js');
 	var _getfunc = require('./utils/get-val.js').function;
 	var Info = require('./utils/info.js');
 	var Action = require('./utils/action.js');
 	var flatArray = require('./utils/flat-array.js');
 
-	var rmdir = fs.rmdir;
-	var unlink = fs.unlink;
-	var stat = fs.stat;
-	var readdir = fs.readdir;
 	var resolvePath = path.resolve;
 	var getParent = path.dirname;
 	var joinPath = path.join;
@@ -24,7 +21,7 @@
 
 	const DONOTHING = () => {};
 
-	var _rm = (entry, onfinish, onaction) => {
+	var __rm = (entry, onfinish, onaction) => {
 		var callOnFinish = (...action) =>
 			onfinish(null, new Info('delete', entry, action));
 		stat(entry, (error, info) => {
@@ -49,7 +46,7 @@
 					var childpromises = new Set();
 					for (let item of list) {
 						let callback = (resolve, reject) =>
-							_rm(joinPath(entry, item), (error, info) => error ? reject(error) : resolve(info), onaction);
+							__rm(joinPath(entry, item), (error, info) => error ? reject(error) : resolve(info), onaction);
 						childpromises.add(new Promise(callback));
 					}
 					Promise.all(childpromises).then((info) => {
@@ -67,6 +64,10 @@
 			onfinish(new Error(`Can't delete entry "${entry}"`), null);
 		});
 	};
+
+	var _rm = (entry, onfinish, onaction) =>
+		addPromise((resolve) => __rm(entry, (...errinf) => resolve(errinf), onaction))
+			.onfinish((errinf) => onfinish(...errinf));
 
 	module.exports = (entry, onfinish, onaction) =>
 		_rm(resolvePath(entry), _getfunc(onfinish, THROWIF), _getfunc(onaction, DONOTHING));

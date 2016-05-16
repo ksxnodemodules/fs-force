@@ -2,7 +2,7 @@
 ((module) => {
 	'use strict';
 
-	var fs = require('fs');
+	var {rmdirSync, unlinkSync, statSync, readdirSync} = require('fs');
 	var path = require('path');
 	var justTry = require('just-try');
 	var _getfunc = require('./utils/get-val.js').function;
@@ -11,10 +11,6 @@
 	var _donothing = require('./utils/do-nothing.js');
 	var flatArray = require('./utils/flat-array.js');
 
-	var rmdirSync = fs.rmdirSync;
-	var unlinkSync = fs.unlinkSync;
-	var statSync = fs.statSync;
-	var readdirSync = fs.readdirSync;
 	var resolvePath = path.resolve;
 	var getParent = path.dirname;
 	var joinPath = path.join;
