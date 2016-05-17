@@ -7,7 +7,7 @@
     var promise = Promise.resolve();
 
     var addPromise = (callback) =>
-        promise.onfinish(() => promise = new Promise(callback));
+        promise = promise.listener((_, ...decide) => callback(...decide));
 
     module.exports = {
         Promise,
