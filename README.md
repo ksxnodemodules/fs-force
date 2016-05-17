@@ -7,9 +7,29 @@
 
 ## Features and Examples
 
- * Honestly, it's just examples
+### Command-line usage
 
-### Prerequisite
+#### Prerequisite
+
+You must have installed fs-force globally:
+
+```bash
+npm i -g fs-force
+```
+
+#### Usage
+
+fs-force provides 3 CLI commands:
+
+```bash
+force-mkdir <dirname-list>
+force-mkfile <file-path> <file-text-content>
+force-delete <list-of-path>
+```
+
+### JavaScript usage
+
+#### Prerequisite
 
 You need this function to run every following examples (except the stuffs-deletion one)
 
@@ -23,17 +43,17 @@ function getAction(action) {
 };
 ```
 
-### Possible situations
+#### Possible situations
 
 Each path of `./temp`, `./temp/need-to-exist`, `./temp/may-not-exist`, `./temp/may-not-exist.txt`, and `./temp/shall-be-deleted` may refer to a file, an empty directory, a directory with full of children, or even an entry that simply doesn't exist in the file system
 
 But you don't need to care about their existence, [fs-force](https://www.npmjs.com/package/fs-force) is here to help
 
-### Do things
+#### Do things
 
-#### Create a directory
+##### Create a directory
 
-##### Asynchronous
+###### Asynchronous
 
 ```javascript
 var mkdir = require('fs-force/mkdir');
@@ -46,7 +66,7 @@ mkdir('./temp/need-to-exist', (error, info) => {
 });
 ```
 
-##### Synchronous
+###### Synchronous
 
 ```javascript
 var mkdirSync = require('fs-force/mkdir-sync');
@@ -58,9 +78,9 @@ try {
 }
 ```
 
-#### Create a file
+##### Create a file
 
-##### Asynchronous
+###### Asynchronous
 
 ```javascript
 var writeFile = require('fs-force/write-file');
@@ -73,7 +93,7 @@ writeFile('temp/may-not-exist/file.txt', 'Hello, World!!', (error, info) => {
 })
 ```
 
-##### Synchronous
+###### Synchronous
 
 ```javascript
 var writeFileSync = require('fs-force/write-file-sync');
@@ -85,9 +105,9 @@ try {
 }
 ```
 
-#### Delete things
+##### Delete things
 
-##### Asynchronous
+###### Asynchronous
 
 ```javascript
 var rm = require('fs-force/delete');
@@ -99,7 +119,7 @@ rm('temp/shall-be-deleted', (error, info) => {
 });
 ```
 
-##### Synchronous
+###### Synchronous
 
 ```javascript
 var rmSync = require('fs-force/delete-sync');
