@@ -5,7 +5,7 @@
 	var {rmdir, unlink, stat, readdir} = require('fs');
 	var path = require('path');
 	var justTry = require('try-promise').try;
-	var {addPromise} = require('./utils/promise.js');
+	var {addPromise} = require('fs-one-promise-queue');
 	var _getfunc = require('./utils/get-val.js').function;
 	var Info = require('./utils/info.js');
 	var Action = require('./utils/action.js');

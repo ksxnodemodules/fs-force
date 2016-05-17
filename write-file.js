@@ -5,7 +5,7 @@
 	var {stat, writeFile} = require('fs');
 	var path = require('path');
 	var justTry = require('try-promise').try;
-	var {addPromise} = require('./utils/promise.js');
+	var {addPromise} = require('fs-one-promise-queue');
 	var _mkdir = require('./mkdir.js');
 	var _rm = require('./delete.js');
 	var _getfunc = require('./utils/get-val.js').function;

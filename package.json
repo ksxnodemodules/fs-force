@@ -16,7 +16,7 @@
 		"node": ">=6.0.0"
 	},
 	"dependencies": {
-		"extended-promise": ">=0.1.1 <2.0.0",
+		"fs-one-promise-queue": ">=1.0.0 <2.0.0",
 		"try-promise": ">=1.0.0 <2.0.0",
 		"just-try": ">=1.0.0 <2.0.0",
 		"fs-force-action-as-string": "ksxnodemodules/fs-force-action-as-string"
