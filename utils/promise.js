@@ -2,19 +2,14 @@
 ((module) => {
     'use strict';
 
-    class Promise extends require('extended-promise') {};
+    var queue = require('fs-one-promise-queue');
 
-    var promise = Promise.resolve();
-
-    var addPromise = (callback) =>
-        promise = promise.listener((_, ...decide) => callback(...decide));
+    var {addPromise} = queue;
 
     module.exports = {
-        Promise,
-        addPromise,
-        get promise() {
-            return promise;
-        }
+        addPromise: (callback) =>
+            addPromise((_, ...rest) => callback(...rest)),
+        __proto__: queue
     };
 
 })(module);
