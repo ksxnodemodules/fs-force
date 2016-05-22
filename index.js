@@ -5,6 +5,5 @@ module.exports = {
 	'writeFile': require('./write-file.js'),
 	'writeFileSync': require('./write-file-sync.js'),
 	'delete': require('./delete.js'),
-	'deleteSync': require('./delete-sync.js'),
-	'utils': require('./utils')
+	'deleteSync': require('./delete-sync.js')
 };
