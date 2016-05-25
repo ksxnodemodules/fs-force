@@ -3,6 +3,10 @@
 
 [![dependencies status](https://david-dm.org/ksxnodemodules/fs-force.svg)](https://david-dm.org/ksxnodemodules/fs-force#info=dependencies)
 [![devDependencies status](https://david-dm.org/ksxnodemodules/fs-force/dev-status.svg)](https://david-dm.org/ksxnodemodules/fs-force#info=devDependencies)
+[![license](https://img.shields.io/npm/l/fs-force.svg)](https://github.com/ksxnodemodules/my-licenses/blob/master/MIT.md)
+![downloads](https://img.shields.io/npm/dt/fs-force.svg)
+![version](https://img.shields.io/npm/v/fs-force.svg)
+![node](https://img.shields.io/node/v/fs-force.svg)
 
 ## Requirements
 
