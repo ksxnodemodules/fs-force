@@ -1,6 +1,9 @@
 
 # fs-force
 
+[![dependencies status](https://david-dm.org/ksxnodemodules/fs-force.svg)](https://david-dm.org/ksxnodemodules/fs-force#info=dependencies)
+[![devDependencies status](https://david-dm.org/ksxnodemodules/fs-force/dev-status.svg)](https://david-dm.org/ksxnodemodules/fs-force#info=devDependencies)
+
 ## Requirements
 
  * Node >= 6.0.0
