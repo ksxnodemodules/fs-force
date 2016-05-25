@@ -13,7 +13,8 @@
 		"url": "git+https://github.com/ksxnodemodules/fs-force.git"
 	},
 	"engines": {
-		"node": ">=6.0.0"
+		"node": ">=6.0.0",
+		"npm": ">=3.0.0"
 	},
 	"dependencies": {
 		"fs-force-mkdir": "^1.4.0",
