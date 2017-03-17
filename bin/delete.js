@@ -3,18 +3,18 @@
 (() => {
   'use strict'
 
-  var resolvePath = require('path').resolve
-  var argv = require('process').argv
-  var rm = require('../delete.js')
+  const resolvePath = require('path').resolve
+  const argv = require('process').argv
+  const rm = require('../delete.js')
 
   if (argv.length === 2) {
     return console.error(`force-delete <list-of-path>`)
   }
 
-  var onfinish = require('./onfinish.js')('Deleting')
-  var onaction = require('./onaction.js')
+  const onfinish = require('./onfinish.js')('Deleting')
+  const onaction = require('./onaction.js')
 
   argv.slice(2)
-        .map((fname) => resolvePath(fname))
-        .forEach((fname) => rm(fname, onfinish, onaction))
+    .map((fname) => resolvePath(fname))
+    .forEach((fname) => rm(fname, onfinish, onaction))
 })()

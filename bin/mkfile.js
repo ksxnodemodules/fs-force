@@ -3,8 +3,8 @@
 (() => {
   'use strict'
 
-  var argv = require('process').argv
-  var writeFile = require('../write-file.js')
+  const argv = require('process').argv
+  const writeFile = require('../write-file.js')
 
   if (argv.length === 2) {
     return console.error(`force-mkfile <file-path> [<file-text-content>]`)
