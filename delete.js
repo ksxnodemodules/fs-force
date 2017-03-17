@@ -1,2 +1,2 @@
 
-module.exports = require('fs-force-delete');
+module.exports = require('fs-force-delete')

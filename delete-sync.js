@@ -1,2 +1,2 @@
 
-module.exports = require('fs-force-delete-sync');
+module.exports = require('fs-force-delete-sync')

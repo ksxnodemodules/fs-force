@@ -1,2 +1,2 @@
 
-module.exports = require('fs-force-mkdir');
+module.exports = require('fs-force-mkdir')

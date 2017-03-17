@@ -1,2 +1,2 @@
 
-module.exports = require('fs-force-write-file');
+module.exports = require('fs-force-write-file')

@@ -25,6 +25,9 @@
 		"fs-force-delete-sync": "^1.0.0",
 		"fs-force-action-as-string": "ksxnodemodules/fs-force-action-as-string"
 	},
+	"devDependencies": {
+		"standard": "^9.0.1"
+	},
 	"main": "index.js",
 	"bin": {
 		"force-mkdir": "./bin/mkdir.js",
@@ -43,6 +46,6 @@
 	},
 	"homepage": "https://github.com/ksxnodemodules/fs-force#readme",
 	"scripts": {
-		"test": "node --es-staging ./test/index.js"
+		"test": "standard"
 	}
 }
