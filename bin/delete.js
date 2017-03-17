@@ -1,4 +1,4 @@
-#! /usr/bin/env node --es-staging
+#! /usr/bin/env node
 
 (() => {
   'use strict'
