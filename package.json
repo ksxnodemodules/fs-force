@@ -20,7 +20,7 @@
 		"fs-force-mkdir": "^1.4.0",
 		"fs-force-mkdir-sync": "^1.1.0",
 		"fs-force-write-file": "^1.0.0",
-		"fs-force-write-file-sync": "^1.0.0",
+		"fs-force-write-file-sync": "^1.0.3",
 		"fs-force-delete": "^1.1.0",
 		"fs-force-delete-sync": "^1.0.0",
 		"fs-force-action-as-string": "ksxnodemodules/fs-force-action-as-string"
